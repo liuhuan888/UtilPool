@@ -24,13 +24,24 @@ public class StringUtil {
 	}
 	
 	//判断是否为电子邮箱
-		public static boolean isEmail(String str){
-			if(!isNotBlank(str)){
-				return false;
-			}
-			String matches = "\\w+@\\w+.com";
-			return str.matches(matches);
+	public static boolean isEmail(String str){
+		if(!isNotBlank(str)){
+			return false;
 		}
+		String matches = "\\w+@\\w+.com";
+		return str.matches(matches);
+	}
 	
+	//判断是否全部为字母
+	public static boolean isLetter(String str){
+		if(!isNotBlank(str)){
+			return false;
+		}
+		String matches = "[A-z]+";
+		return str.matches(matches);
+	}
 	
+	public static void main(String[] args) {
+		System.out.println();
+	}
 }
