@@ -1,5 +1,6 @@
 package com.liuhuan.common.utils;
 
+//字符串工具类
 public class StringUtil {
 
 	//判断源字符串是否有值，空引号和空格也算没值，有值返回true，没值返回false
@@ -41,7 +42,9 @@ public class StringUtil {
 		return str.matches(matches);
 	}
 	
+	//
+	
 	public static void main(String[] args) {
-		System.out.println();
+		System.out.println(isLetter(null));
 	}
 }
