@@ -23,7 +23,14 @@ public class StringUtil {
 		return str.matches(matches);
 	}
 	
-	
+	//判断是否为电子邮箱
+		public static boolean isEmail(String str){
+			if(!isNotBlank(str)){
+				return false;
+			}
+			String matches = "\\w+@\\w+.com";
+			return str.matches(matches);
+		}
 	
 	
 }
