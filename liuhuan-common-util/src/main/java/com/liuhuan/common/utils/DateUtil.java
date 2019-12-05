@@ -1,5 +1,7 @@
 package com.liuhuan.common.utils;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -36,7 +38,19 @@ public class DateUtil {
 		return age;
 	}
 	
+	public static int getAge(String birthDate) {
+		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+		Date date = null;
+		try {
+			date = simpleDateFormat.parse(birthDate);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return getAge(date);
+	}
+	
 	public static void main(String[] args) {
-		System.out.println();
+		System.out.println(getAge("1999-12-05"));
 	}
 }

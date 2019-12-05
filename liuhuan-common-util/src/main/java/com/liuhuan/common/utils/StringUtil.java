@@ -29,7 +29,7 @@ public class StringUtil {
 		if(!isNotBlank(str)){
 			return false;
 		}
-		String matches = "\\w+@\\w+.com";
+		String matches = "\\w+@\\w+.(com|cn|com.cn|net)";
 		return str.matches(matches);
 	}
 	
