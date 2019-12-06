@@ -1,5 +1,7 @@
 package com.liuhuan.common.utils;
 
+import java.util.Random;
+
 //字符串工具类
 public class StringUtil {
 
@@ -42,9 +44,25 @@ public class StringUtil {
 		return str.matches(matches);
 	}
 	
-	//
+	//获取随机英文字母
+	public static char getRandomChar() {
+		//随机类
+		Random random = new Random();
+		//获得英文字母对应的哈希码
+		int hashChar = 'a'+random.nextInt(26);	
+		return (char)hashChar;
+	}
+	
+	//获取n位随机英文字符串
+	public static String getRandomString(int n) {
+		StringBuffer stringBuffer = new StringBuffer();
+		for(int i = 0; i<n;i++){
+			stringBuffer.append(getRandomChar());
+		}
+		return stringBuffer.toString();
+	}
 	
 	public static void main(String[] args) {
-		System.out.println(isLetter(null));
+		System.out.println(getRandomString(26));
 	}
 }
