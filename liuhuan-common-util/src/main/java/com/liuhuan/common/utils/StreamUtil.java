@@ -5,8 +5,11 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.List;
 
 public class StreamUtil {
 
@@ -43,7 +46,38 @@ public class StreamUtil {
 		}
 	}
 	
+	//重载读取文本文件	
+	public static String readTextFile(String fileFullName){
+		File file = new File(fileFullName);
+		return readTextFile(file); 
+	}
+	
+	//按行读取文本文件
+	public static List<String> readTextFileList(File file){
+		List<String> list = new ArrayList<String>();
+		BufferedReader br = null;
+		try {
+			br = new BufferedReader(new FileReader(file));
+			while (br.read()!=-1) {
+				list.add(br.readLine());
+			}
+			return list;
+		} catch (IOException e) {
+			e.printStackTrace();
+			return null;
+		}finally {
+			closeAll(br);
+		}
+		
+	}
+	
+	//重载按行读取文本文件
+	public static List<String> readTextFileList(String fileFullName){
+		File file = new File(fileFullName);
+		return readTextFileList(file);
+	}
+	
 	public static void main(String[] args) {
-		System.out.println(readTextFile(new File("E:/MyGit/hello.txt.txt")));
+		System.out.println(readTextFileList("E:/MyGit/hello.txt.txt"));
 	}
 }
