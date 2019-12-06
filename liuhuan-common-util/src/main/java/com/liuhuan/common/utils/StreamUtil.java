@@ -1,11 +1,9 @@
 package com.liuhuan.common.utils;
 
-import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -83,16 +81,21 @@ public class StreamUtil {
 	public static void writerFile(String content, File file, boolean append) {
 		BufferedWriter bufferedWriter = null;
 		try {
-			bufferedWriter = new BufferedWriter(new FileWriter(file,append));
+			// 判断父文件夹是否存在
+			File parentFile = file.getParentFile();
+			if (parentFile.exists()) {
+				parentFile.mkdirs();
+			}
+			bufferedWriter = new BufferedWriter(new FileWriter(file, append));
 			bufferedWriter.write(content);
 			bufferedWriter.flush();
 		} catch (IOException e) {
 			e.printStackTrace();
-		}finally {
+		} finally {
 			closeAll(bufferedWriter);
 		}
 	}
-	
+
 	// 重载写入文本文件
 	public static void writerFile(String content, String fileFullName, boolean append) {
 		File file = new File(fileFullName);
@@ -100,6 +103,6 @@ public class StreamUtil {
 	}
 
 	public static void main(String[] args) {
-		writerFile("123456789zxcvvbnbn",new File("C:\\Users\\83795\\Desktop\\aa.txt"),true);
+		writerFile("123456789zxcvvbnbn", new File("C:\\Users\\83795\\Desktop\\aa.txt"), true);
 	}
 }
