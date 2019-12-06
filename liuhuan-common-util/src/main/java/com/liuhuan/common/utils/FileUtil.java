@@ -39,7 +39,26 @@ public class FileUtil {
 		deleteFile(file);
 	}
 	
+	//返回文件以指定单位大小表示
+	public static String getFileSize(File file) {
+		long length = file.length();
+		double kb = length/1024.0;
+		if(kb/1024/1024>1){
+			return String.format("%.2f", kb/1024/1024)+"GB";
+		}else if(kb/1024>1){
+			return String.format("%.2f", kb/1024)+"MB";
+		}else {
+			return String.format("%.2f", kb)+"KB";
+		}
+	}
+	
+	//重载查询文件大小
+	public static String getFileSize(String fileFullName) {
+		File file = new File(fileFullName);
+		return getFileSize(file);
+	}
+	
 	public static void main(String[] args) {
-		System.out.println(getUserDirectory());
+		System.out.println(getFileSize(new File("E:\\CMS\\笔记\\day7\\day7-完善日期工具类.mp4")));
 	}
 }
