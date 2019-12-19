@@ -62,6 +62,22 @@ public class StringUtil {
 		return stringBuffer.toString();
 	}
 	
+	public static boolean judgeTelephoneIsOk(String src){
+		if(!isNotBlank(src)){
+			return false;
+		}
+		String matches = "1\\d{10}";
+		return src.matches(matches);
+	}
+	
+	public static boolean isNumber(String str) {
+		if(!isNotBlank(str)){
+			return false;
+		}
+		String matches = "[0-9]+";
+		return str.matches(matches);
+	}
+	
 	public static void main(String[] args) {
 		System.out.println(getRandomString(26));
 	}

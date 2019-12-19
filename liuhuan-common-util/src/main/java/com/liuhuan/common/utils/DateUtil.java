@@ -136,4 +136,8 @@ public class DateUtil {
 		c.add(Calendar.SECOND, -1);
 		return c.getTime();
 	}
+
+	public static String format(Date theDate) {
+		return dateFormat.format(theDate);
+	}
 }
